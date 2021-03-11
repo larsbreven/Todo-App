@@ -4,49 +4,59 @@ using System.Text;
 
 namespace Todo_App.Model
 {
-    class Person
+    public class Person
     {
+        // Fields 
+        public static int idCounter = 0 ;           // Skall vara private
+
         private string firstName;
         private string lastName;
-        private readonly int personId;
+        private int personId;                      //  Skall vara readonly 
 
 
-
-        public Person(string firstName, string lastName, int personId)
+        public Person(int personId, string firstName, string lastName)
         {
+            this.personId = personId;
             this.firstName = firstName;
             this.lastName = lastName;
-            this.personId = personId;
         }
-        public string FirstName                         // Public string name property
+
+        public int Id { get; set; }
+        public string FirstName                    // Public string name property
         {
-            get     // If somebody wants to access this FirstName property they will get firstname in return, acts as a get-method
+            get     // If somebody wants to access this Firstname property they will get firstname in return, act as a get-method
             {
                 return firstName;   // If somebody try to access from outside they will get what is in this code block, firstName
             }
+
             set
             {
-
-                if (string.IsNullOrEmpty(value))    // Indicates whether the specified string is Null or an empty string "" 
+                if (string.IsNullOrEmpty(value))   // Indicates whether the specified string is Null or an empty string
                 {
-                    firstName = value;              // This value is only valid when we are inside the property "set"
+                    firstName = value;             // This value is only valid when inside the property "set"
                 }
             }
         }
-
         public string LastName
         {
             get
             {
                 return lastName;
-            }
+            }   
+                
             set
             {
-                if (string.IsNullOrEmpty(value))    // Indicates whether the specified string is Null or an empty string "" 
+                if (string.IsNullOrEmpty(value))    // Indicates whether the specified string is Null or an empty string
                 {
-                    lastName = value;
+                    firstName = value;              // This value is only valid when inside the property "set"
                 }
             }
+        }
+
+
+        public Person()
+        {
+            Id = ++idCounter;
         }
     }
 }
