@@ -7,43 +7,28 @@ namespace PersonTest
     public class PersonTest
     {
         [Fact]
-        public void PersonIdTest()
+        public void PersonIdTest()                      // Test method to check the Id is not 0
         {
-            // Arrange
-            Person testPerson = new Person();
-
-            // Act
-            int result = testPerson.Id;
-
-            // Assert
-           Assert.NotEqual( 0,result);
+            Person testPerson = new Person();           // Arrange
+            int result = testPerson.Id;                 // Act
+            Assert.NotEqual(0, result);                 // Assert
         }
-         
-        
-      
-       [Fact]
-       public void PersonUniqueIdTest()
-       { 
-            // Arrange
-            Person testPerson1 = new Person();
+
+        [Fact]
+        public void PersonUniqueIdTest()                // Test method to make sure the testing order is independent
+        {
+            Person testPerson1 = new Person();          // Arrange
             Person testPerson2 = new Person();
             Person testPerson3 = new Person();
-
-            // Act
-            int result1 = testPerson1.Id;
+                
+            int result1 = testPerson1.Id;               // Act
             int result2 = testPerson2.Id;
             int result3 = testPerson3.Id;
 
-            // Assert
-            //Assert.Equal(1, result1);
-            //Assert.Equal(2, result2);
-            //Assert.Equal(3, result3);
-
-            Assert.True(result1 != result2 && result1 != result3);  // Make sure the testing order is independent
+            Assert.True(result1 != result2 && result1 != result3);  // Assert
             Assert.True(result2 != result1 && result2 != result3);
             Assert.True(result3 != result1 && result3 != result1);
-
-       }
+        }
 
     }
 }
